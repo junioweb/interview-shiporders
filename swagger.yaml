@@ -1,0 +1,180 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server Shiporders server."
+  version: "1.0.0"
+  title: "Shiporders"
+  contact:
+    email: "junio.webmaster@gmail.com"
+  license:
+    name: "GPL-3.0"
+    url: "https://github.com/junioweb/interview-shiporders/blob/master/LICENSE"
+host: "localhost"
+basePath: "/api/v1"
+tags:
+- name: "people"
+  description: "Everything about people"
+- name: "shiporders"
+  description: "Everything about Ship Orders"
+- name: "xml"
+  description: "Everything about XML"
+schemes:
+- "https"
+- "http"
+paths:
+  /people:
+    get:
+      tags:
+      - "people"
+      summary: "Returns people"
+      description: "Returns a map of person"
+      operationId: "getPeople"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/People"
+      security:
+      - api_key: []
+  /shiporders:
+    get:
+      tags:
+      - "shiporders"
+      summary: "Returns shiporders"
+      description: "Returns a map of shiporder"
+      operationId: "getShiporders"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Shiporders"
+      security:
+      - api_key: []
+  /uploadXml:
+    post:
+      tags:
+      - "xml"
+      summary: "uploads an xml"
+      description: ""
+      operationId: "uploadFile"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "file"
+        in: "formData"
+        description: "file to upload"
+        required: true
+        type: "file"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+      security:
+      - api_key: []
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+  People:
+    type: "array"
+    items:
+      $ref: "#/definitions/Person"
+    xml:
+      name: "people"
+      wrapped: true
+  Person:
+    type: "object"
+    properties:
+      personid:
+        type: "integer"
+        format: "int64"
+      personname:
+        type: "string"
+      phones:
+        type: "array"
+        xml:
+          name: "phones"
+          wrapped: true
+        items:
+          type: "integer"
+          format: "int64"
+          xml:
+            name: "phone"
+    xml:
+      name: "person"
+  Shiporders:
+    type: "array"
+    items:
+      $ref: "#/definitions/Shiporder"
+    xml:
+      name: "shiporders"
+      wrapped: true
+  Shiporder:
+    type: "object"
+    properties:
+      orderid:
+        type: "integer"
+        format: "int64"
+      orderperson:
+        type: "integer"
+        format: "int64"
+      shipto:
+        $ref: "#/definitions/Shipto"
+      items:
+        type: "array"
+        items:
+          $ref: "#/definitions/Item"
+        xml:
+          name: "items"
+          wrapped: true
+    xml:
+      name: "shiporder"
+  Shipto:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      address:
+        type: "string"
+      city:
+        type: "string"
+      country:
+        type: "string"
+    xml:
+      name: "shipto"
+  Item:
+    type: "object"
+    properties:
+      title:
+        type: "string"
+      note:
+        type: "string"
+      quantity:
+        type: "integer"
+        format: "int32"
+      price:
+        type: "number"
+        format: "float"
+    xml:
+      name: "item"
+  ApiResponse:
+    type: "object"
+    properties:
+      message:
+        type: "string"
+externalDocs:
+  description: "Find out more about Shiporders"
+  url: "https://github.com/junioweb/interview-shiporders/blob/master/README.md"
