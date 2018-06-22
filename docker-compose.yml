@@ -6,15 +6,17 @@ services:
       container_name: symfony-redis
 
     mysql:
-      image: mysql:8.0
+      image: mysql
       container_name: symfony-mysql
       ports:
-        - "3306:3306"
+        - "3307:3306"
       environment:
         - MYSQL_ROOT_PASSWORD=shiporders
         - MYSQL_DATABASE=interview-shiporders
         - MYSQL_USER=shiporders
         - MYSQL_PASSWORD=shiporders
+      volumes:
+        - ./docker/data:/var/lib/mysql
 
     webserver:
       image: nginx:alpine
