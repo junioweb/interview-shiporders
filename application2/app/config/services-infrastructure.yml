@@ -1,0 +1,4 @@
+services:
+  infra.json.service:
+      class: Infrastructure\Service\JsonService
+      arguments: ['@serializer', '@app.validator.service']

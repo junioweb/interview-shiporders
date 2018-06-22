@@ -1,0 +1,4 @@
+services:
+  infra.json_response.service:
+    class: Infrastructure\Service\JsonResponse
+    arguments: ['@infra.json.service']

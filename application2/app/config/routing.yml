@@ -1,0 +1,3 @@
+people:
+    resource: "@AppBundle/Controller/PeopleController.php"
+    type:     rest
