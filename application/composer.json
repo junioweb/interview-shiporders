@@ -1,10 +1,11 @@
 {
-    "name": "fernandojunior/application",
-    "license": "proprietary",
+    "name": "Shiporders",
+    "license": "GPL-3.0",
     "type": "project",
     "autoload": {
         "psr-4": {
-            "AppBundle\\": "src/AppBundle"
+            "AppBundle\\": "src/AppBundle",
+            "Domain\\": "src/Domain"
         },
         "classmap": [
             "app/AppKernel.php",
@@ -20,10 +21,12 @@
         "php": ">=5.3.9",
         "doctrine/doctrine-bundle": "~1.4",
         "doctrine/orm": "^2.4.8",
+        "friendsofsymfony/oauth-server-bundle": "^1.6",
         "friendsofsymfony/rest-bundle": "^2.3",
         "friendsofsymfony/user-bundle": "^2.1",
         "incenteev/composer-parameter-handler": "~2.0",
         "jms/serializer-bundle": "^2.4",
+        "nelmio/api-doc-bundle": "^2.13",
         "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "symfony/monolog-bundle": "^3.0.2",

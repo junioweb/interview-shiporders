@@ -38,7 +38,7 @@ twig:
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver: pdo_sqlite
+        driver: pdo_mysql
         host: '%database_host%'
         port: '%database_port%'
         dbname: '%database_name%'
@@ -50,12 +50,19 @@ doctrine:
         #     e.g. database_path: '%kernel.root_dir%/data/data.db3'
         #   2. Uncomment database_path in parameters.yml.dist
         #   3. Uncomment next line:
-        path: '%database_path%'
+        #path: '%database_path%'
 
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        mappings:
+            Domain:
+                type: annotation
+                dir: "%kernel.root_dir%/../src/Domain"
+                is_bundle: false
+                prefix: Domain
+                alias: Domain
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -64,6 +71,8 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+nelmio_api_doc: ~
 
 fos_rest:
     routing_loader:
@@ -80,9 +89,9 @@ fos_user:
 
 fos_oauth_server:
     db_driver:           orm
-    client_class:        FOS\OAuthServerBundle\Entity\Client
-    access_token_class:  FOS\OAuthServerBundle\Entity\AccessToken
-    refresh_token_class: FOS\OAuthServerBundle\Entity\RefreshToken
-    auth_code_class:     FOS\OAuthServerBundle\Entity\AuthCode
+    client_class:        Domain\Model\Client
+    access_token_class:  Domain\Model\AccessToken
+    refresh_token_class: Domain\Model\RefreshToken
+    auth_code_class:     Domain\Model\AuthCode
     service:
         user_provider: fos_user.user_manager
