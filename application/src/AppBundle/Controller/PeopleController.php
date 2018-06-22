@@ -32,8 +32,12 @@ class PeopleController extends FOSRestController
      */
     public function listAction(): JsonResponse
     {
+        $personService = $this->get('app.person.service');
+
+        $people = $personService->findAll();
+
         $json = $this->container->get('jms_serializer')
-            ->serialize('oi', 'json');
+            ->serialize($people, 'json');
 
         $response = new JsonResponse($json, 200, ['Content-Type' => 'application/json']);
 

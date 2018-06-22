@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: repositories.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -82,16 +83,16 @@ fos_rest:
 fos_user:
     db_driver: orm
     firewall_name: main
-    user_class: Domain\Model\User
+    user_class: Domain\Model\User\User
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
 
 fos_oauth_server:
     db_driver:           orm
-    client_class:        Domain\Model\Client
-    access_token_class:  Domain\Model\AccessToken
-    refresh_token_class: Domain\Model\RefreshToken
-    auth_code_class:     Domain\Model\AuthCode
+    client_class:        Domain\Model\Client\Client
+    access_token_class:  Domain\Model\AccessToken\AccessToken
+    refresh_token_class: Domain\Model\RefreshToken\RefreshToken
+    auth_code_class:     Domain\Model\AuthCode\AuthCode
     service:
         user_provider: fos_user.user_manager

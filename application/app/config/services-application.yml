@@ -1,0 +1,4 @@
+services:
+    app.person.service:
+        class: AppBundle\Service\PersonService
+        arguments: ['@app.person.repository']
