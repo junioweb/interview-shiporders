@@ -22,6 +22,9 @@ class PersonService implements PersonServiceInterface
         $this->personRepository = $personRepository;
     }
 
+    /**
+     * @return Collection
+     */
     public function findAll(): Collection
     {
         return $this->personRepository->list();

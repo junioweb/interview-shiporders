@@ -1,8 +1,0 @@
-services:
-    app.validator.service:
-        class: AppBundle\Service\ValidatorService
-        arguments: ['@validator']
-
-    app.person.service:
-        class: AppBundle\Service\PersonService
-        arguments: ['@infra.person.repository']

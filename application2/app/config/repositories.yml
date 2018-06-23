@@ -1,6 +1,0 @@
-services:
-  infra.person.repository:
-     class: Infrastructure\Persistence\Doctrine\PersonRepository
-     factory: ['@doctrine.orm.default_entity_manager', getRepository]
-     arguments:
-         - Domain\Model\Person\Person

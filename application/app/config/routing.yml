@@ -12,3 +12,11 @@ app_people:
 app_upload_people:
     type: rest
     resource: AppBundle\Controller\UploadPeopleController
+
+app_shiporders:
+    type: rest
+    resource: AppBundle\Controller\ShipordersController
+
+app_upload_shiporders:
+    type: rest
+    resource: AppBundle\Controller\UploadShipordersController
