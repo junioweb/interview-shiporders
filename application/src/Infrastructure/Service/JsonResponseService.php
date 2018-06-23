@@ -69,6 +69,14 @@ class JsonResponseService implements JsonResponseServiceInterface
         return $this->createResponse(Response::HTTP_NO_CONTENT);
     }
 
+    /**
+     * @return Response
+     */
+    public function created(): Response
+    {
+        return $this->createResponse(Response::HTTP_CREATED);
+    }
+
     private function createResponse(
         int $code,
         $type = null,

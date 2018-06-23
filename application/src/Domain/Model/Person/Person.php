@@ -36,8 +36,8 @@ class Person
 
     /**
      * @var Collection
-     *
-     * @Serializer\Type("ArrayCollection<Phone>")
+     * @Serializer\Type("ArrayCollection<Domain\Model\Person\Phone>")
+     * @Serializer\XmlList(entry="phone")
      * @Serializer\Groups("default")
      * @ORM\OneToMany(targetEntity="Phone", mappedBy="person")
      */

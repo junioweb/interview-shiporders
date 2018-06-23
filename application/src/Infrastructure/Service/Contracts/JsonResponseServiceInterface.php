@@ -31,4 +31,9 @@ interface JsonResponseServiceInterface
      * @return Response
      */
     public function noContent(): Response;
+
+    /**
+     * @return Response
+     */
+    public function created(): Response;
 }

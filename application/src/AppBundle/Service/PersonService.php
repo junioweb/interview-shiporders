@@ -26,4 +26,12 @@ class PersonService implements PersonServiceInterface
     {
         return $this->personRepository->list();
     }
+
+    /**
+     * @param Collection $people
+     */
+    public function insertByCollection(Collection $people): void
+    {
+        $this->personRepository->saveByCollection($people);
+    }
 }

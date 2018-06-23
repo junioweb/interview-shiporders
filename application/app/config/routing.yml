@@ -8,3 +8,7 @@ fos_user:
 app_people:
     type: rest
     resource: AppBundle\Controller\PeopleController
+
+app_upload_people:
+    type: rest
+    resource: AppBundle\Controller\UploadPeopleController
