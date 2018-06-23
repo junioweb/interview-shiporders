@@ -18,6 +18,7 @@ class Person
      * @var integer
      *
      * @Serializer\Type("integer")
+     * @Serializer\Groups("default")
      * @ORM\Column(name="personid", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -28,6 +29,7 @@ class Person
      * @var string
      *
      * @Serializer\Type("string")
+     * @Serializer\Groups("default")
      * @ORM\Column(name="personname")
      */
     protected $personname;
@@ -36,6 +38,7 @@ class Person
      * @var Collection
      *
      * @Serializer\Type("ArrayCollection<Phone>")
+     * @Serializer\Groups("default")
      * @ORM\OneToMany(targetEntity="Phone", mappedBy="person")
      */
     protected $phones;

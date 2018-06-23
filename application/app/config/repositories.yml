@@ -1,5 +1,5 @@
 services:
-    app.person.repository:
+    person.repository:
         class: Infrastructure\Persistence\Doctrine\PersonRepository
         factory: ['@doctrine.orm.default_entity_manager', getRepository]
         arguments:

@@ -5,7 +5,7 @@ namespace AppBundle\Controller;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class PeopleController
@@ -28,19 +28,15 @@ class PeopleController extends FOSRestController
      *  }
      * )
      * @Rest\Get("")
-     * @return JsonResponse
+     * @return Response
      */
-    public function listAction(): JsonResponse
+    public function listAction(): Response
     {
+        $jsonResponseService = $this->get('infra.json_response.service');
         $personService = $this->get('app.person.service');
 
         $people = $personService->findAll();
 
-        $json = $this->container->get('jms_serializer')
-            ->serialize($people, 'json');
-
-        $response = new JsonResponse($json, 200, ['Content-Type' => 'application/json']);
-
-        return $response;
+        return $jsonResponseService->success($people);
     }
 }

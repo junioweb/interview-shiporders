@@ -17,6 +17,7 @@ class Phone
      * @var Person
      *
      * @Serializer\Type("Person")
+     * @Serializer\Groups("default")
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Person")
      * @ORM\JoinColumn(name="personid", referencedColumnName="personid")
@@ -27,6 +28,7 @@ class Phone
      * @var integer
      *
      * @Serializer\Type("integer")
+     * @Serializer\Groups("default")
      * @ORM\Column(name="phone", type="integer")
      */
     protected $phone;

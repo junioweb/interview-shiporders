@@ -1,6 +1,7 @@
 <?php
 
-namespace Presentation\DataTransferObject;
+namespace Infrastructure\Presentation\DataTransferObject;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Class SimpleMessage
@@ -10,6 +11,8 @@ class SimpleMessage
 {
     /**
      * @var string
+     * @Serializer\Type("string")
+     * @Serializer\Groups("default")
      */
     private $mensagem;
 

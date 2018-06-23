@@ -1,4 +1,8 @@
 services:
+  infra.json.service:
+    class: Infrastructure\Service\JsonService
+    arguments: ['@jms_serializer']
+
   infra.json_response.service:
-    class: Infrastructure\Service\JsonResponse
+    class: Infrastructure\Service\JsonResponseService
     arguments: ['@infra.json.service']

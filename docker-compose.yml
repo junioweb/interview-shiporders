@@ -35,11 +35,11 @@ services:
         - ./application:/var/www/html
         - ./docker/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
 
-    composer:
-      image: composer
-      container_name: symfony-composer
-      volumes:
-        - ./application:/app
-      command: install
-      depends_on:
-        - webserver
+#    composer:
+#      image: composer
+#      container_name: symfony-composer
+#      volumes:
+#        - ./application:/app
+#      command: install
+#      depends_on:
+#        - webserver
