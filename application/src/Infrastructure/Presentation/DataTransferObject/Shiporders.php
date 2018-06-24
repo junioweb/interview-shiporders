@@ -35,4 +35,12 @@ class Shiporders
         $this->shiporders = $shiporders;
     }
 
+    /**
+     * @return bool
+     */
+    public function isEmpty(): bool
+    {
+        return $this->shiporders->isEmpty();
+    }
+
 }

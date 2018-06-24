@@ -6,6 +6,7 @@ use FOS\RestBundle\Controller\FOSRestController;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 /**
  * Class UploadPeopleController
@@ -17,7 +18,8 @@ class UploadShipordersController extends FOSRestController
      * @ApiDoc(
      *   description="Upload the Shiporders XML",
      *   statusCodes={
-     *     201="Returned when XML is successfully processed"
+     *     201="Returned when XML is successfully processed",
+     *     400="Returned when is invalid XML"
      *   }
      * )
      * @param Request $request
@@ -34,6 +36,10 @@ class UploadShipordersController extends FOSRestController
             'Infrastructure\Presentation\DataTransferObject\Shiporders',
             'xml'
         );
+
+        if ($shiporders->isEmpty()) {
+            throw new BadRequestHttpException("Invalid XML! Must be of type Shiporders.");
+        }
 
         $shiporderService->insertByCollection($shiporders->getShiporders());
 

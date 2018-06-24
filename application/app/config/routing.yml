@@ -23,3 +23,7 @@ app_people:
 app_upload_people:
     type: rest
     resource: AppBundle\Controller\UploadPeopleController
+
+app_uploads:
+    type: rest
+    resource: AppBundle\Controller\UploadsController

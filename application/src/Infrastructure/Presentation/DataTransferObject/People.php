@@ -35,4 +35,12 @@ class People
         $this->people = $people;
     }
 
+    /**
+     * @return bool
+     */
+    public function isEmpty(): bool
+    {
+        return $this->people->isEmpty();
+    }
+
 }

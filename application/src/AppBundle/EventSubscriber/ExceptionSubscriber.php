@@ -79,12 +79,12 @@ class ExceptionSubscriber implements EventSubscriberInterface
     {
         $this->saveLogger($exception);
 
-        $mensagem = $exception->getMessage();
+        $message = $exception->getMessage();
 
         if ($exception instanceof BadRequestHttpException) {
-            return $this->jsonResponseService->badRequest($mensagem);
+            return $this->jsonResponseService->badRequest($message);
         }
 
-        return $this->jsonResponseService->internalError($mensagem);
+        return $this->jsonResponseService->internalError($message);
     }
 }

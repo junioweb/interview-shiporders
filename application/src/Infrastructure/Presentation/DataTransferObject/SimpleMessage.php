@@ -14,22 +14,22 @@ class SimpleMessage
      * @Serializer\Type("string")
      * @Serializer\Groups("default")
      */
-    private $mensagem;
+    private $message;
 
     /**
      * SimpleMessage constructor.
-     * @param string $mensagem
+     * @param string $message
      */
-    public function __construct(string $mensagem)
+    public function __construct(string $message)
     {
-        $this->mensagem = $mensagem;
+        $this->message = $message;
     }
 
     /**
      * @return string
      */
-    public function getMensagem()
+    public function getMessage()
     {
-        return $this->mensagem;
+        return $this->message;
     }
 }
