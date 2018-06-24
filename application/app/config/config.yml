@@ -74,7 +74,9 @@ swiftmailer:
     password: '%mailer_password%'
     spool: { type: memory }
 
-nelmio_api_doc: ~
+nelmio_api_doc:
+  sandbox:
+    enabled: false
 
 fos_rest:
     routing_loader:
@@ -96,4 +98,4 @@ fos_oauth_server:
     refresh_token_class: Domain\Model\RefreshToken\RefreshToken
     auth_code_class:     Domain\Model\AuthCode\AuthCode
     service:
-        user_provider: fos_user.user_manager
+        user_provider: fos_user.user_provider.username_email

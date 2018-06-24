@@ -2,24 +2,28 @@
 
 namespace AppBundle\Controller;
 
-use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class UploadPeopleController
  * @package AppBundle\Controller
- * @Rest\Prefix("/upload-people")
  */
 class UploadPeopleController extends FOSRestController
 {
     /**
-     * @Rest\Post("")
+     * @ApiDoc(
+     *   description="Upload the People XML",
+     *   statusCodes={
+     *     201="Returned when XML is successfully processed"
+     *   }
+     * )
      * @param Request $request
      * @return Response
      */
-    public function postAction(Request $request): Response
+    public function postUploadPeopleAction(Request $request): Response
     {
         $serializer = $this->get('jms_serializer');
         $jsonResponseService = $this->get('infra.json_response.service');
