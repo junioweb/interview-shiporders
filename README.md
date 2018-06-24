@@ -1,15 +1,17 @@
 # interview-shiporders
-Your customer receives two XML models from his partner. This information must be available for both web system and
-mobile app.
 
-API Documentation can be checked here: http://localhost:8000/api/doc
+After initialization of containers, API Documentation can be checked here: http://localhost:8000/api/doc
+
+### Requirements
+
+- [Docker](https://www.docker.com/get-docker)
+- [Docker compose](https://docs.docker.com/compose/install/)
 
 ***
 
 To test follow the following instructions:
 
-Load the containers in Docker Compose with the command: `docker-compose up` #Using the flag `-d` to mode deamon.
-_P.s.: Wait for the installation of dependencies to be completed through the container symfony-composer._
+Load the containers in Docker Compose with the command: `docker-compose up` #Using the flag `-d` to mode deamon.  _P.s.: Wait for the installation of dependencies to be completed through the container symfony-composer._
 
 Make a request POST to the resource http://localhost:8000/oauth/v2/token, with the sending of the following data to
 the request parameters:
