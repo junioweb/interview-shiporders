@@ -1,6 +1,11 @@
 # interview-shiporders
 
-API Documentation can be checked here: http://localhost:8000/api/doc
+After initialization of containers, API Documentation can be checked here: http://localhost:8000/api/doc
+
+### Requirements
+
+- [Docker](https://www.docker.com/get-docker)
+- [Docker compose](https://docs.docker.com/compose/install/)
 
 ***
 
