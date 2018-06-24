@@ -16,6 +16,12 @@ interface PersonServiceInterface
     public function findAll(): Collection;
 
     /**
+     * @param int $id
+     * @return null|object
+     */
+    public function findOneById(int $id);
+
+    /**
      * @param Collection $people
      */
     public function insertByCollection(Collection $people): void;

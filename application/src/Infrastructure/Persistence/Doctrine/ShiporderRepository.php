@@ -21,6 +21,15 @@ class ShiporderRepository extends EntityRepository implements ShiporderRepositor
     }
 
     /**
+     * @param int $id
+     * @return null|object
+     */
+    public function getById(int $id)
+    {
+        return $this->find($id);
+    }
+
+    /**
      * @param Collection $shiporders
      * @throws \Doctrine\ORM\OptimisticLockException
      */

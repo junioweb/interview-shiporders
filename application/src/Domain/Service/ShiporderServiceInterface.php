@@ -16,6 +16,12 @@ interface ShiporderServiceInterface
     public function findAll(): Collection;
 
     /**
+     * @param int $id
+     * @return null|object
+     */
+    public function findOneById(int $id);
+
+    /**
      * @param Collection $shiporders
      */
     public function insertByCollection(Collection $shiporders): void;

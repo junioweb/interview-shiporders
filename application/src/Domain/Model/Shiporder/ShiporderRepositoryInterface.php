@@ -16,6 +16,12 @@ interface ShiporderRepositoryInterface
     public function list(): Collection;
 
     /**
+     * @param int $id
+     * @return null|object
+     */
+    public function getById(int $id);
+
+    /**
      * @param Collection $shiporders
      */
     public function saveByCollection(Collection $shiporders): void;

@@ -24,6 +24,15 @@ class PersonRepository extends EntityRepository implements PersonRepositoryInter
     }
 
     /**
+     * @param int $id
+     * @return null|object
+     */
+    public function getById(int $id)
+    {
+        return $this->find($id);
+    }
+
+    /**
      * @param Collection $people
      * @throws \Doctrine\ORM\OptimisticLockException
      */

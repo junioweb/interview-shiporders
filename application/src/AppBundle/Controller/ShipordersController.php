@@ -35,4 +35,25 @@ class ShipordersController extends FOSRestController
 
         return $jsonResponseService->success($shiporders);
     }
+
+    /**
+     * @ApiDoc(
+     *   description="Return a shiporder",
+     *   output="Domain\Model\Shiporder\Shiporder",
+     *   statusCodes={
+     *     200="Returned when successful"
+     *   }
+     * )
+     * @param int $id
+     * @return Response
+     */
+    public function getShiporderAction(int $id): Response
+    {
+        $jsonResponseService = $this->get('infra.json_response.service');
+        $shipordersService = $this->get('app.shiporder.service');
+
+        $shiporder = $shipordersService->findOneById($id);
+
+        return $jsonResponseService->success($shiporder);
+    }
 }

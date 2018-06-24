@@ -31,6 +31,15 @@ class PersonService implements PersonServiceInterface
     }
 
     /**
+     * @param int $id
+     * @return null|object
+     */
+    public function findOneById(int $id)
+    {
+        return $this->personRepository->getById($id);
+    }
+
+    /**
      * @param Collection $people
      */
     public function insertByCollection(Collection $people): void
