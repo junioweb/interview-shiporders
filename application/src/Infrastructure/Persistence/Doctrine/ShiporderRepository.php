@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityRepository;
 use Domain\Model\Shiporder\Item;
 use Domain\Model\Shiporder\Shiporder;
 use Domain\Model\Shiporder\ShiporderRepositoryInterface;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class ShiporderRepository extends EntityRepository implements ShiporderRepositoryInterface
 {
@@ -22,11 +23,19 @@ class ShiporderRepository extends EntityRepository implements ShiporderRepositor
 
     /**
      * @param int $id
-     * @return null|object
+     * @return object
      */
-    public function getById(int $id)
+    public function getById(int $id): object
     {
-        return $this->find($id);
+        $shiporder = $this->find($id);
+
+        if (!$shiporder) {
+            throw new BadRequestHttpException(
+                'There is no record saved on the database with this id'
+            );
+        }
+
+        return $shiporder;
     }
 
     /**

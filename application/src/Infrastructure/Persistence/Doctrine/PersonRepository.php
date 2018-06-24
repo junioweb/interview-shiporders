@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityRepository;
 use Domain\Model\Person\Person;
 use Domain\Model\Person\PersonRepositoryInterface;
 use Domain\Model\Person\Phone;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 /**
  * Class PersonRepository
@@ -25,11 +26,19 @@ class PersonRepository extends EntityRepository implements PersonRepositoryInter
 
     /**
      * @param int $id
-     * @return null|object
+     * @return object
      */
-    public function getById(int $id)
+    public function getById(int $id): object
     {
-        return $this->find($id);
+        $person = $this->find($id);
+
+        if (!$person) {
+            throw new BadRequestHttpException(
+                'There is no record saved on the database with this id'
+            );
+        }
+
+        return $person;
     }
 
     /**

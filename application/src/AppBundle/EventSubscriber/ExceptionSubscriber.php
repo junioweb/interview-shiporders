@@ -9,6 +9,7 @@ use Monolog\Logger;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
@@ -80,8 +81,8 @@ class ExceptionSubscriber implements EventSubscriberInterface
 
         $mensagem = $exception->getMessage();
 
-        if ($exception instanceof DomainException) {
-            return $this->jsonResponseService->internalError($mensagem);
+        if ($exception instanceof BadRequestHttpException) {
+            return $this->jsonResponseService->badRequest($mensagem);
         }
 
         return $this->jsonResponseService->internalError($mensagem);

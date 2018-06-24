@@ -17,9 +17,9 @@ interface PersonRepositoryInterface
 
     /**
      * @param int $id
-     * @return null|object
+     * @return object
      */
-    public function getById(int $id);
+    public function getById(int $id): object;
 
     /**
      * @param Collection $people
